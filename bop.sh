@@ -4,14 +4,37 @@ echo 'TCDWH Labs presents: Brazilian Open Port [BOP]';
 
 sleep 2 ;
 
-zmap -p $1 -o results.csv1.exit 139.82.0.0/16 ;
+
+filename="$1";
+port= "$2";
+tempfileEx=".exit"
+
+x=0
+
+while read -r line
+do
+
+x=$((x+1))
+
+echo "Iniciando linha $x ......... $line"
+
+exitfile="result.csv$x"
+
+zmap -p $2 -o $exitfile$tempfileEx  $line ;
 sleep 1 ;
-zmap -p $1 -o results.csv2.exit 143.54.0.0/16 ;
-sleep 1 ;
-zmap -p $1 -o results.csv3.exit 143.106.0.0/16 ;
-sleep 1 ;
-zmap -p $1 -o results.csv4.exit 143.107.0.0/16 ;
-sleep 1 ;
+
+
+done < "$filename"
+
+
+#zmap -p $1 -o results.csv1.exit 139.82.0.0/16 ;
+#sleep 1 ;
+#zmap -p $1 -o results.csv2.exit 143.54.0.0/16 ;
+#sleep 1 ;
+#zmap -p $1 -o results.csv3.exit 143.106.0.0/16 ;
+#sleep 1 ;
+#zmap -p $1 -o results.csv4.exit 143.107.0.0/16 ;
+#sleep 1 ;
 #zmap -p $1 -o results.csv5.exit 143.108.0.0/16 ;
 #sleep 1 ;
 #zmap -p $1 -o results.csv6.exit 144.23.0.0/16 ;
