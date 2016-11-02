@@ -1,5 +1,5 @@
 #!/bin/bash   
-
+tempfileEx
 echo 'TCDWH Labs presents: Brazilian Open Port [BOP]';
 
 sleep 2 ;
@@ -20,8 +20,8 @@ do
 
    exitfile="result.csv$x"
 
-   zmap -p $2 -o $exitfile$tempfileEx  $line ;
-   sleep 2 ;
+#   zmap -p $2 -o $exitfile$tempfileEx  $line ;
+#   sleep 2 ;
 
 done < "$filename"
 
@@ -31,5 +31,13 @@ FILENAME="FinalScan.txt";
 touch $FILENAME;
 
 for b in $(ls $PREFIX); do
-   echo "$(cat $b)" >> $FILENAME;
+
+   echo "$(cat $b )" >> $FILENAME$tempfileEx;
+
+   rm -rf $b;
+
 done;
+
+echo "$(cat $FILENAME$tempfileEx | grep -v '^$')" >> $FILENAME;
+
+rm -rf $FILENAME$tempfileEx;
