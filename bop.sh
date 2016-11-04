@@ -1,5 +1,5 @@
-#!/bin/bash   
-tempfileEx
+#!/bin/bash
+
 echo 'TCDWH Labs presents: Brazilian Open Port [BOP]';
 
 sleep 2 ;
@@ -20,8 +20,8 @@ do
 
    exitfile="result.csv$x"
 
-#   zmap -p $2 -o $exitfile$tempfileEx  $line ;
-#   sleep 2 ;
+   zmap -T 4 -p $2 -o $exitfile$tempfileEx  $line ;
+   sleep 2 ;
 
 done < "$filename"
 
