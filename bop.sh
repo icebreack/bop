@@ -4,10 +4,16 @@ echo 'TCDWH Labs presents: Brazilian Open Port [BOP]';
 
 sleep 2 ;
 
+#sh bop.sh <entrada> <porta> <saida>
+
 
 filename="$1";
 port= "$2";
-tempfileEx=".exit"
+tempfileEx=".exit";
+PREFIX="*.exit";
+FILENAME="$3";
+
+
 
 x=0
 
@@ -18,16 +24,13 @@ do
 
    echo "Iniciando linha $x ......... $line"
 
-   exitfile="result.csv$x"
+   exitfile="$3$x"
 
    zmap -T 4 -p $2 -o $exitfile$tempfileEx  $line ;
    sleep 2 ;
 
 done < "$filename"
 
-
-PREFIX="*.exit";
-FILENAME="FinalScan.txt";
 touch $FILENAME;
 
 for b in $(ls $PREFIX); do
