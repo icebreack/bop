@@ -27,7 +27,7 @@ do
    exitfile="$3$x"
 
    zmap -T 4 -p $2 -o $exitfile$tempfileEx  $line ;
-   sleep 2 ;
+   #sleep 2 ;
 
 done < "$filename"
 
